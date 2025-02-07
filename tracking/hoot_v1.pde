@@ -1,25 +1,25 @@
 /*
-Teclas:
-  f: Alterna full screen.
-  c: Captura o frame atual em SVG e PNG.
-  r: Randomiza as cores do fundo, grid, olhos e logo.
-  s: Alterna o tipo de forma desenhada nas células:
-       0 - Triângulo "recortado"
-       1 - Organic ellipse (contorno orgânico com 20 pontos)
-       2 - Abstract quadrilateral (quadrilátero perturbado)
-       3 - Abstract blob (forma orgânica com 8 pontos)
-       4 - Abstract star (estrela irregular com 10 pontos)
-  0: Reseta para a configuração inicial.
-Clique/Arraste: Zoom ou dispara a animação em onda (as formas morpham suavemente enquanto a onda passa).
+Keys:
+  f: Toggle full screen.
+  c: Capture the current frame in SVG and PNG.
+  r: Randomize the background, grid, eyes, and logo colors.
+  s: Toggle the type of shape drawn in the cells:
+       0 - "Cut-out" triangle
+       1 - Organic ellipse (organic outline with 20 points)
+       2 - Abstract quadrilateral (distorted quadrilateral)
+       3 - Abstract blob (organic shape with 8 points)
+       4 - Abstract star (irregular star with 10 points)
+  0: Reset to the initial configuration.
+Click/Drag: Zoom or trigger the wave animation (the shapes morph smoothly as the wave passes).
 */
 
-// Função auxiliar para gerar contornos conforme o modo e o tamanho (em coordenadas locais)
+// Auxiliary function to generate contours according to the mode and size (in local coordinates)
 PVector[] generateShape(int mode, float size) {
   PVector[] verts;
   int n;
   switch(mode) {
     case 0:
-      // Triângulo
+      // Triangle
       n = 3;
       verts = new PVector[n];
       int pivot = int(random(4));
@@ -44,7 +44,7 @@ PVector[] generateShape(int mode, float size) {
       }
       break;
     case 1:
-      // Organic ellipse – 20 pontos ao redor do centro, com raios aleatórios
+      // Organic ellipse – 20 points around the center, with random radii
       n = 20;
       verts = new PVector[n];
       for (int i = 0; i < n; i++) {
@@ -54,7 +54,7 @@ PVector[] generateShape(int mode, float size) {
       }
       break;
     case 2:
-      // Abstract quadrilateral – 4 pontos com perturbação
+      // Abstract quadrilateral – 4 points with perturbation
       n = 4;
       verts = new PVector[n];
       for (int i = 0; i < n; i++) {
@@ -64,7 +64,7 @@ PVector[] generateShape(int mode, float size) {
       }
       break;
     case 3:
-      // Abstract blob – 8 pontos
+      // Abstract blob – 8 points
       n = 8;
       verts = new PVector[n];
       for (int i = 0; i < n; i++) {
@@ -74,7 +74,7 @@ PVector[] generateShape(int mode, float size) {
       }
       break;
     case 4:
-      // Abstract star – 10 pontos, alternando raio fixo e aleatório
+      // Abstract star – 10 points, alternating fixed and random radius
       n = 10;
       verts = new PVector[n];
       for (int i = 0; i < n; i++) {
@@ -94,7 +94,7 @@ PVector[] generateShape(int mode, float size) {
   return verts;
 }
 
-// Função auxiliar para clonar um array de PVectors
+// Auxiliary function to clone an array of PVectors
 PVector[] cloneShape(PVector[] shape) {
   PVector[] newShape = new PVector[shape.length];
   for (int i = 0; i < shape.length; i++) {
@@ -104,7 +104,7 @@ PVector[] cloneShape(PVector[] shape) {
 }
 
 // ===================================================
-// Variáveis globais e setup do sketch
+// Global variables and sketch setup
 // ===================================================
 import processing.svg.*;
 import java.awt.Frame;
@@ -327,10 +327,10 @@ void keyPressed() {
   }
   
   if (key == 's' || key == 'S') {
-    // Atualiza o modo e então atualiza todas as células para que usem o novo modo
+    // Update the mode and then update all cells to use the new mode
     cellShapeMode = (cellShapeMode + 1) % 5;
     println("Cell shape mode: " + cellShapeMode);
-    // Para cada célula, atualiza o contorno de acordo com o novo modo
+    // For each cell, update the contour according to the new mode
     for (int i = 0; i < cols; i++) {
       for (int j = 0; j < rows; j++) {
         Cell cell = grid[i][j];
@@ -365,9 +365,9 @@ void reinitializeGrid() {
 }
 
 // ===================================================
-// Classe Cell – cada célula armazena o contorno atual, anterior e alvo,
-// gerado de acordo com o modo (cellShapeMode). Durante a animação, interpola
-// entre previousShape e targetShape.
+// Cell class – each cell stores the current, previous, and target contours,
+// generated according to the mode (cellShapeMode). During the animation,
+// it interpolates between previousShape and targetShape.
 // ===================================================
 class Cell {
   float x, y, size;
@@ -390,13 +390,13 @@ class Cell {
     animProgress = 1;
   }
   
-  // Inicia a animação: copia o contorno atual para previousShape e gera um novo targetShape
+  // Start the animation: copy the current contour to previousShape and generate a new targetShape
   void startAnimation(float currentTime, float delay) {
     for (int i = 0; i < currentShape.length; i++) {
       previousShape[i] = currentShape[i].copy();
     }
     targetShape = generateShape(cellShapeMode, size);
-    // Se o número de vértices mudou, ajuste para evitar erros:
+    // If the number of vertices changed, adjust to avoid errors:
     if (targetShape.length != previousShape.length) {
       currentShape = targetShape;
       previousShape = cloneShape(targetShape);
@@ -406,7 +406,7 @@ class Cell {
     animating = true;
   }
   
-  // Atualiza a animação interpolando entre previousShape e targetShape
+  // Update the animation by interpolating between previousShape and targetShape
   void update(float currentTime) {
     float t;
     if (animating) {
@@ -427,7 +427,7 @@ class Cell {
     }
   }
   
-  // Desenha o contorno atual deslocado pela posição (x, y)
+  // Draw the current contour offset by position (x, y)
   void display() {
     noStroke();
     if (randomColors) fill(gridRectColor); else fill(0);
