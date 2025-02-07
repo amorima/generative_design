@@ -147,7 +147,8 @@ color logoColor;
 int cellShapeMode = 0;
 
 void setup() {
-  size(1920, 960);
+  //size(1920, 960);
+  fullScreen(1);
   pixelDensity(displayDensity());
   smooth();
   
