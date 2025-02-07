@@ -60,5 +60,11 @@ O ficheiro `hoot_final_design.pde` contém a versão final do projeto, incluindo
 
 Below is an example of how the project’s folder structure might look:
 
-hoot_project/ ├── data/ │ ├── logo.svg │ └── olho.svg ├── captures/ (where SVG/PNG captures may be stored) ├── hoot_initial_design.pde └── hoot_final_design.pde
-
+```plaintext
+hoot_project/
+├── data/
+│   ├── logo.svg
+│   └── olho.svg
+├── captures/          (where SVG/PNG captures may be stored)
+├── hoot_initial_design.pde
+└── hoot_final_design.pde
