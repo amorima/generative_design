@@ -13,7 +13,6 @@ This folder contains two files:
 - **`hoot_final_design.pde`** – Contains the final version of the project, showcasing a wide range of features accessible via the commands below:
 
 **Keys**:  
-- **f**: Toggle full screen.  
 - **c**: Capture the current frame in SVG and PNG.  
 - **r**: Randomize the background, grid, eyes, and logo colors.  
 - **s**: Toggle the type of shape drawn in the cells:  
@@ -41,7 +40,6 @@ O ficheiro `hoot_initial_design.pde` contém a primeira iteração deste design.
 O ficheiro `hoot_final_design.pde` contém a versão final do projeto, incluindo um conjunto avançado de funcionalidades que podem ser acedidas através dos seguintes comandos:
 
 **Teclas**:  
-- **f**: Alternar full screen.  
 - **c**: Capturar o frame atual em SVG e PNG.  
 - **r**: Randomizar as cores do fundo, da grelha, dos olhos e do logo.  
 - **s**: Alternar o tipo de forma desenhada nas células:  
