@@ -7,10 +7,7 @@ Throughout the course, participants were introduced to experimental concepts and
 I chose to work with a visual identity called **Hoot**, originally created during the Design Fundamentals course unit.  
 The main goal of this project was to build a program that uses generative design to produce assets which can be reused in various graphic and multimedia contexts.
 
-This folder contains two files:
-
-- **`hoot_initial_design.pde`** – Demonstrates the first iteration of this design. It renders a black background, displays the original logo colors, and includes an interactive feature where the logo’s eyes follow the mouse cursor.  
-- **`hoot_final_design.pde`** – Contains the final version of the project, showcasing a wide range of features accessible via the commands below:
+- **`final project.pde`** – Contains the final version of the project, showcasing a wide range of features accessible via the commands below:
 
 **Keys**:  
 - **c**: Capture the current frame in SVG and PNG.  
@@ -34,10 +31,7 @@ Ao longo do curso foram introduzidos conceitos experimentais e formas de utiliza
 No meu caso, escolhi uma identidade visual desenvolvida no âmbito da Unidade Curricular de Fundamentos de Design, a Hoot.  
 O objetivo do projeto desenvolvido foi criar um programa que explora o design generativo para a criação de "assets" que podem ser reutilizados na produção de outros produtos gráficos e multimédia.
 
-Nesta pasta existem dois ficheiros.  
-O ficheiro `hoot_initial_design.pde` contém a primeira iteração deste design. Renderiza um ecrã de fundo preto, o logo com o esquema cromático original, e os “olhos” do logo seguem o rato.
-
-O ficheiro `hoot_final_design.pde` contém a versão final do projeto, incluindo um conjunto avançado de funcionalidades que podem ser acedidas através dos seguintes comandos:
+O ficheiro `final project.pde` contém a versão final do projeto, incluindo um conjunto avançado de funcionalidades que podem ser acedidas através dos seguintes comandos:
 
 **Teclas**:  
 - **c**: Capturar o frame atual em SVG e PNG.  
@@ -64,5 +58,4 @@ hoot_project/
 │   ├── logo.svg
 │   └── olho.svg
 ├── captures/          (where SVG/PNG captures may be stored)
-├── hoot_initial_design.pde
 └── hoot_final_design.pde
